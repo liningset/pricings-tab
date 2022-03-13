@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our pricing</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./app/scss/main.css" />
+  </head>
+  <body>
+    <img src="./images/bg-top.svg" class="bg bg-top" />
+    <img src="./images/bg-bottom.svg" class="bg bg-bottom" />
+    <div class="wrapper">
+      <h2>Our Pricing</h2>
+      <div class="toggle-container">
+        <span>Annually</span>
+        <div class="toggle-box annually">
+          <div class="pusher"></div>
+          <div class="t-circle"></div>
+        </div>
+        <span>Monthly</span>
+      </div>
+      <div class="plans-flex">
+        <div class="plan basic">
+          <div class="plan-inner">
+            <span class="plan-type">Basic</span>
+            <h1 class="plan-price">199.99</h1>
+            <div class="plan-features">
+              <span> 500 GB Storage </span>
+              <span>2 Users Allowed </span>
+              <span>Send up to 3 GB</span>
+            </div>
+            <button class="cta">LEARN MORE</button>
+          </div>
+        </div>
+        <div class="plan pro popular">
+          <div class="plan-inner">
+            <span class="plan-type">Professional</span>
+            <h1 class="plan-price">249.99</h1>
+            <div class="plan-features">
+              <span>1 TB Storage </span>
+              <span>5 Users Allowed</span>
+              <span>Send up to 10 GB</span>
+            </div>
+            <button class="cta">LEARN MORE</button>
+          </div>
+        </div>
+        <div class="plan master">
+          <div class="plan-inner">
+            <span class="plan-type">Master</span>
+            <h1 class="plan-price">399.99</h1>
+            <div class="plan-features">
+              <span>2 TB Storage </span>
+              <span>10 Users Allowed</span>
+              <span>Send up to 20 GB</span>
+            </div>
+            <button class="cta">LEARN MORE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const planPrices = [
+        {
+          type: "basic",
+          annually: 200,
+          monthly: 20,
+        },
+        {
+          type: "pro",
+          annually: 250,
+          monthly: 25,
+        },
+        {
+          type: "master",
+          annually: 400,
+          monthly: 40,
+        },
+      ];
+      const toggleBox = document.querySelector(".toggle-box");
+      toggleBox.addEventListener("click", () => {
+        if (toggleBox.classList.contains("annually")) {
+          toggleBox.classList.remove("annually");
+          toggleBox.classList.add("monthly");
+
+          planPrices.forEach((obj) => {
+            document
+              .querySelector(`.${obj.type}`)
+              .querySelector("h1").innerText = obj.monthly - 0.01;
+          });
+        } else {
+          toggleBox.classList.add("annually");
+          toggleBox.classList.remove("monthly");
+
+          planPrices.forEach((obj) => {
+            document
+              .querySelector(`.${obj.type}`)
+              .querySelector("h1").innerText = obj.annually - 0.01;
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

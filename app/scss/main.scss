@@ -1,0 +1,211 @@
+@import "./vars";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 15px;
+}
+
+body {
+  font-family: $main-font;
+  background: $Very-Light-Grayish-Blue;
+  font-weight: 700;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.bg {
+  position: absolute;
+  width: min(40vw, 250px);
+  pointer-events: none;
+  z-index: -1;
+
+  &.bg-top {
+    top: 0;
+    right: 0;
+  }
+  &.bg-bottom {
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  width: min(90%, 1000px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  padding-block: 2rem;
+}
+
+h2 {
+  color: $Grayish-Blue;
+}
+
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: $Light-Grayish-Blue;
+
+  .toggle-box {
+    height: 2rem;
+    width: 4rem;
+    border-radius: 50rem;
+    padding: 3px;
+    background: linear-gradient(to right, $g-from, $g-to);
+    cursor: pointer;
+    display: flex;
+    transition: all 0.5s ease;
+
+    .pusher {
+      transition: inherit;
+    }
+
+    .t-circle {
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      background: #fff;
+      transition: inherit;
+    }
+  }
+  .annually .pusher {
+    flex: 0;
+  }
+  .monthly .pusher {
+    flex: 1;
+  }
+}
+
+.plans-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .plan {
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    flex: 1;
+    box-shadow: 0 0 2rem hsl(234, 14%, 74%, 0.25);
+
+    button {
+      border-radius: 0.5rem;
+      padding-block: 0.5rem;
+      transition: all 0.3s ease;
+      font: inherit;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+
+    &:not(.popular) {
+      background: #fff;
+      color: $Grayish-Blue;
+
+      &.basic {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      &.master {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      h1 {
+        color: $Dark-Grayish-Blue;
+      }
+
+      button {
+        color: #fff;
+        background: $g-to;
+
+        &:hover {
+          color: $g-to;
+          background: transparent;
+          border: 1px solid $g-to;
+        }
+      }
+    }
+    &.popular {
+      background: linear-gradient(to right, $g-from, $g-to);
+      color: #fff;
+      z-index: 1;
+
+      button {
+        color: $g-to;
+        background: #fff;
+
+        &:hover {
+          color: #fff;
+          background: transparent;
+          border: 1px solid #fff;
+        }
+      }
+    }
+  }
+}
+
+.plan-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  h1 {
+    font-size: min(10vw, 3rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    &::before {
+      content: "$";
+      font-size: 70%;
+    }
+  }
+}
+.plan-features {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-block: 1px solid $Light-Grayish-Blue;
+
+  span {
+    padding-block: 1rem;
+    &:nth-of-type(2) {
+      border-block: 1px solid $Light-Grayish-Blue;
+    }
+  }
+}
+
+@media (min-width: 800px) {
+  .wrapper {
+    padding-block: 0;
+  }
+
+  .plans-flex {
+    flex-direction: row;
+    gap: 0;
+    align-items: center;
+
+    .popular {
+      padding: 3rem 2rem;
+    }
+  }
+}
+
+@media (min-width: 1100px) {
+  .plan-inner h1 {
+    font-size: 4rem;
+  }
+}
